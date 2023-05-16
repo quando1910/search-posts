@@ -1,31 +1,31 @@
 import { combineReducers } from 'redux';
-import { createReducer } from '../../shared/core/services/redux';
-// import { Highway } from 'shared/models/Highway';
+import { callingApi, createReducer, handleApiError, handleApiSuccess } from '../../shared/core/services/redux';
 
-const initialFavoriteState = {
-  favorites: []
-}
+const initialPostsState = {}
 
-const addFavorite = (state: any, payload: any) => {
-  const checkExisted = state.favorites.find((x: any) => x.id === payload.id);
-  if (!checkExisted) {
-    // state.favorites.push(new Highway(payload));
-  }
-  return {
-    ...state,
-    favorites: [...state.favorites],
-  }
+const searchPosts = (state: any, payload: any) => {
+  return callingApi(state);
 };
 
-const favoriteStrategies = {
-  ADD_FAVORITE: addFavorite,
+const searchPostsSuccess = (state: any, payload: any) => {
+  return handleApiSuccess(state, payload);
+};
+
+const searchPostsError = (state: any, payload: any) => {
+  return handleApiError(state, payload);
+};
+
+const postsStrategies = {
+  SEARCH_POSTS: searchPosts,
+  SEARCH_POSTS_SUCCESS: searchPostsSuccess,
+  SEARCH_POSTS_ERROR: searchPostsError,
   __default__: (state: any) => state,
 };
-const favoriteController = createReducer(favoriteStrategies, {
-  ...initialFavoriteState,
+const postsController = createReducer(postsStrategies, {
+  ...initialPostsState,
 });
 
 /* commonReducer */
 export const commonReducer = combineReducers({
-  favoriteController,
+  postsController,
 });

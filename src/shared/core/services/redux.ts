@@ -3,21 +3,21 @@ export const createReducer =
     (state = initialState, { type, payload }: any) =>
       (strategies[type] ?? strategies.__default__)(state, payload);
 
-export const generateAPIAction = (name: any) => {
-  return (
-    payload = null,
-    resolve = () => { },
-    reject = () => { }) => (
-    {
-      type: name,
-      payload,
-      resolve,
-      reject,
-    }
-  );
-};
+// export const generateAPIAction = (name: any) => {
+//   return (
+//     payload = null,
+//     resolve = () => { },
+//     reject = () => { }) => (
+//     {
+//       type: name,
+//       payload,
+//       resolve,
+//       reject,
+//     }
+//   );
+// };
 
-const API_PROCESS = {
+export const API_PROCESS = {
   UNFETCH: 0,
   LOADING: 1,
   SUCESS: 2,

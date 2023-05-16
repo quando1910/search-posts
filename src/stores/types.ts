@@ -1,1 +1,3 @@
-export const GET_LIST = 'GET_LIST';
+export const SEARCH_POSTS = 'SEARCH_POSTS';
+export const SEARCH_POSTS_ERROR = 'SEARCH_POSTS_ERROR';
+export const SEARCH_POSTS_SUCCESS = 'SEARCH_POSTS_SUCCESS';
